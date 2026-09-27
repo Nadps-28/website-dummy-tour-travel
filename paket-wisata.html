@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <title>Katalog Paket Wisata Lengkap - Arvenza Travel</title>
+    <meta name="description" content="Katalog lengkap paket wisata domestik dan internasional all-inclusive Arvenza Travel." />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Font Awesome 6 Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Hanken+Grotesk:ital,wght@0,300..700;1,300..700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet" />
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f3c3e",
+                        "primary-hover": "#092728",
+                        "primary-container": "#154e51",
+                        "secondary": "#ad3319",
+                        "secondary-hover": "#8e2712",
+                        "tertiary": "#c87814",
+                        "background": "#faf7f2",
+                        "surface": "#ffffff",
+                        "surface-container-low": "#f4efe6",
+                        "on-background": "#1a2122",
+                        "on-surface-variant": "#5a6465",
+                        "gold": "#d97706",
+                        "whatsapp": "#25D366"
+                    },
+                    fontFamily: {
+                        "display": ["DM Serif Display", "serif"],
+                        "body": ["Hanken Grotesk", "sans-serif"],
+                        "caps": ["Space Grotesk", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .modal-backdrop { transition: opacity 0.3s ease-in-out; }
+        .modal-content { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease-in-out; }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body min-h-screen antialiased selection:bg-secondary selection:text-white">
+
+    <!-- Top Navigation Bar -->
+    <nav id="navbar" class="bg-primary text-white py-4 shadow-md sticky top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a href="index.html" class="font-display text-2xl font-display text-white tracking-tight">
+                Arvenza<span class="text-tertiary">.</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html#paket" class="font-caps text-xs tracking-wider uppercase text-white/90 hover:text-white transition-colors">Beranda</a>
+                <a href="index.html#layanan" class="font-caps text-xs tracking-wider uppercase text-white/90 hover:text-white transition-colors">Layanan</a>
+                <a href="index.html#testimoni" class="font-caps text-xs tracking-wider uppercase text-white/90 hover:text-white transition-colors">Testimoni</a>
+                <a href="index.html#faq" class="font-caps text-xs tracking-wider uppercase text-white/90 hover:text-white transition-colors">FAQ</a>
+            </div>
+            <div class="hidden md:flex items-center gap-4">
+                <a href="index.html#kontak" class="bg-whatsapp hover:bg-emerald-600 text-white font-caps text-xs tracking-wider uppercase px-5 py-2.5 rounded-full shadow-md transition-all flex items-center gap-2 font-bold">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Konsultasi Trip
+                </a>
+            </div>
+
+            <!-- Mobile Toggle Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white bg-black/30 backdrop-blur-md border border-white/20 px-3.5 py-2 rounded-xl focus:outline-none transition-all flex items-center gap-2 font-caps text-xs font-semibold" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars text-sm"></i> Menu
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-primary/95 backdrop-blur-lg border-b border-white/10 px-6 pt-4 pb-6 mt-3 space-y-3 shadow-2xl transition-all">
+            <a href="index.html#paket" class="mobile-nav-link block font-caps text-sm text-white/90 hover:text-tertiary py-2 border-b border-white/5">Beranda</a>
+            <a href="index.html#layanan" class="mobile-nav-link block font-caps text-sm text-white/90 hover:text-tertiary py-2 border-b border-white/5">Layanan</a>
+            <a href="index.html#testimoni" class="mobile-nav-link block font-caps text-sm text-white/90 hover:text-tertiary py-2 border-b border-white/5">Testimoni</a>
+            <a href="index.html#faq" class="mobile-nav-link block font-caps text-sm text-white/90 hover:text-tertiary py-2 border-b border-white/5">FAQ</a>
+            <a href="index.html#kontak" class="mobile-nav-link block w-full text-center bg-whatsapp text-white font-caps text-xs uppercase tracking-wider py-3.5 rounded-xl font-bold shadow-md flex items-center justify-center gap-2 mt-4">
+                <i class="fa-brands fa-whatsapp text-base"></i> Konsultasi Trip
+            </a>
+        </div>
+    </nav>
+
+    <!-- Page Hero Banner with Image & Overlay -->
+    <header class="relative min-h-[35vh] sm:min-h-[45vh] flex items-center py-12 sm:py-16 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+        <div class="absolute inset-0 z-0 overflow-hidden rounded-2xl sm:rounded-3xl mx-1 my-1 sm:mx-4">
+            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1600&auto=format&fit=crop&q=80" 
+                 alt="Travel Catalog Banner" 
+                 class="w-full h-full object-cover scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/60"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent"></div>
+        </div>
+        <div class="relative z-10 max-w-3xl mx-auto text-center px-4">
+            <span class="bg-white/10 text-tertiary font-caps text-[10px] sm:text-xs uppercase tracking-widest px-3.5 py-1 rounded-full border border-white/20 mb-3 inline-block font-semibold">Katalog Resmi 2024/2025</span>
+            <h1 class="font-display text-3xl sm:text-5xl text-white mb-3 leading-tight">Eksplorasi Katalog Paket Tour</h1>
+            <p class="text-xs sm:text-base text-white/85 max-w-xl mx-auto font-light leading-relaxed">
+                Temukan destinasi favorit Anda dengan pilihan paket Open Trip, Private Luxury, dan Outing Perusahaan.
+            </p>
+        </div>
+    </header>
+
+    <main class="py-8 sm:py-12 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <!-- Search & Filter Controls -->
+        <div class="bg-surface p-4 sm:p-6 rounded-2xl border border-gray-200/80 shadow-sm mb-8 sm:mb-10">
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 sm:gap-4">
+                <div class="sm:col-span-2">
+                    <label class="block font-caps text-xs text-on-surface-variant font-semibold mb-1">Cari Nama Paket / Destinasi</label>
+                    <input type="text" id="katalog-search" placeholder="Contoh: Labuan Bajo, Japan, Bali..." class="w-full bg-surface-container-low border border-gray-200 rounded-xl text-xs sm:text-sm p-2.5 sm:p-3 focus:ring-2 focus:ring-primary focus:outline-none" />
+                </div>
+                <div>
+                    <label class="block font-caps text-xs text-on-surface-variant font-semibold mb-1">Kategori Destinasi</label>
+                    <select id="katalog-category" class="w-full bg-surface-container-low border border-gray-200 rounded-xl text-xs sm:text-sm p-2.5 sm:p-3 focus:ring-2 focus:ring-primary focus:outline-none">
+                        <option value="all">Semua Kategori</option>
+                        <option value="domestik">Wisata Domestik</option>
+                        <option value="internasional">Wisata Internasional</option>
+                        <option value="open-trip">Open Trip</option>
+                        <option value="private-trip">Private Trip</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button id="katalog-filter-btn" class="w-full bg-primary hover:bg-primary-hover text-white font-caps text-xs font-bold uppercase tracking-wider py-3 px-4 rounded-xl flex items-center justify-center gap-2">
+                        Filter Paket
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tour Cards Grid -->
+        <div id="katalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+            <!-- Populated via JS -->
+        </div>
+    </main>
+
+    <!-- Full 4-Column Rich Footer (Identical to index.html) -->
+    <footer class="bg-primary text-white border-t border-white/10 pt-12 sm:pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 mb-8 sm:mb-12">
+            <div>
+                <a href="index.html" class="font-display text-xl sm:text-2xl text-white mb-3 block">
+                    Arvenza<span class="text-tertiary">.</span>
+                </a>
+                <p class="text-xs text-white/70 font-light leading-relaxed mb-3">
+                    Penyelenggara tur dan travel profesional terpercaya dengan spesialisasi perjalanan domestik & luar negeri all-inclusive.
+                </p>
+                <div class="text-[11px] font-caps text-tertiary">
+                    Official PPIU No. 912000341
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-caps text-xs font-bold uppercase tracking-widest text-tertiary mb-3 sm:mb-4">Navigasi Utama</h4>
+                <ul class="space-y-2 text-xs text-white/80 font-light">
+                    <li><a href="index.html#paket" class="hover:text-white transition-colors">Paket Wisata Populer</a></li>
+                    <li><a href="index.html#layanan" class="hover:text-white transition-colors">Kategori Layanan</a></li>
+                    <li><a href="index.html#keunggulan" class="hover:text-white transition-colors">Keunggulan Layanan</a></li>
+                    <li><a href="index.html#testimoni" class="hover:text-white transition-colors">Testimoni Traveler</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-caps text-xs font-bold uppercase tracking-widest text-tertiary mb-3 sm:mb-4">Bantuan & Legal</h4>
+                <ul class="space-y-2 text-xs text-white/80 font-light">
+                    <li><a href="index.html#faq" class="hover:text-white transition-colors">Frequently Asked Questions</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Syarat & Ketentuan Booking</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Kebijakan Privasi</a></li>
+                    <li><a href="index.html#kontak" class="hover:text-white transition-colors">Hubungi Agent 24/7</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-caps text-xs font-bold uppercase tracking-widest text-tertiary mb-3 sm:mb-4">Kantor Pusat</h4>
+                <p class="text-xs text-white/80 font-light mb-2">Jl. Jendral Sudirman No. 88, Suite 12B, Jakarta Selatan</p>
+                <p class="text-xs text-white/80 font-light mb-2">info@arvenzatravel.com</p>
+                <p class="text-xs text-white/80 font-light">+62 812 3456 7890</p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] sm:text-xs text-white/60">
+            <p>© 2024 Arvenza Travel Specialist. All rights reserved.</p>
+            <p class="mt-2 sm:mt-0 font-caps">Designed for Client Portfolio Reference</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Package Detail Modal Popup -->
+    <div id="packageModal" class="fixed inset-0 z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-6">
+        <div class="modal-backdrop absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closePackageModal()"></div>
+        <div class="modal-content relative bg-surface rounded-t-3xl sm:rounded-3xl max-w-3xl w-full max-h-[92vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl z-10 border border-gray-200">
+            <button onclick="closePackageModal()" class="absolute top-3 right-3 z-30 w-8 h-8 sm:w-9 sm:h-9 bg-black/50 hover:bg-black text-white rounded-full flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-sm sm:text-base"></i>
+            </button>
+
+            <div class="relative h-48 sm:h-72 overflow-hidden">
+                <img id="modal-img" src="" alt="Package Detail" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                <div class="absolute bottom-3 sm:bottom-4 left-4 sm:left-6 right-4 sm:right-6 text-white">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span id="modal-badge-type" class="bg-secondary text-white font-caps text-[9px] sm:text-[10px] uppercase font-bold px-2 py-0.5 rounded"></span>
+                        <span id="modal-badge-duration" class="bg-white/20 backdrop-blur font-caps text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded"></span>
+                    </div>
+                    <h2 id="modal-title" class="font-display text-xl sm:text-3xl font-bold leading-tight"></h2>
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-8 space-y-5 sm:space-y-6">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3.5 sm:p-4 bg-surface-container-low rounded-2xl border border-gray-200">
+                    <div>
+                        <span class="text-[10px] sm:text-xs text-on-surface-variant font-caps">Harga Spesial Promo:</span>
+                        <div class="flex items-baseline gap-2">
+                            <span id="modal-price" class="font-display text-xl sm:text-2xl font-bold text-secondary"></span>
+                            <span id="modal-original-price" class="text-xs text-gray-400 line-through"></span>
+                        </div>
+                    </div>
+                    <button id="modal-book-btn" class="w-full sm:w-auto bg-whatsapp hover:bg-emerald-600 text-white font-caps text-xs uppercase font-bold px-5 py-3 rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Booking Paket Ini
+                    </button>
+                </div>
+
+                <div>
+                    <h3 class="font-display text-base sm:text-lg text-primary mb-2.5">Fasilitas Termasuk:</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3" id="modal-facilities"></div>
+                </div>
+
+                <div>
+                    <h3 class="font-display text-base sm:text-lg text-primary mb-2.5">Rencana Perjalanan (Itinerary):</h3>
+                    <div class="space-y-2.5" id="modal-itinerary"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const packagesData = {
+            1: {
+                title: "Sailing Labuan Bajo Premium",
+                category: "domestik open-trip",
+                type: "Open Trip",
+                duration: "4D3N",
+                price: "Rp 3.490.000 /pax",
+                originalPrice: "Rp 4.500.000",
+                img: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&auto=format&fit=crop&q=80",
+                desc: "Sailing Phinisi Boat, Trekking Pulau Padar, Komodo National Park, & Pink Beach Snorkeling.",
+                facilities: [
+                    "Hotel 1M & Phinisi 2M",
+                    "Airport Transfer PP",
+                    "Makan All-In 3x Sehari",
+                    "Kapal Luxury Phinisi AC",
+                    "Drone & DSLR Photo",
+                    "Alat Snorkeling Lengkap"
+                ],
+                itinerary: [
+                    { day: "Hari 1", title: "Penjemputan & Sunset Pulau Kalong", desc: "Check-in kapal Phinisi, sunset Pulau Kalong." },
+                    { day: "Hari 2", title: "Trekking Pulau Padar & Pink Beach", desc: "Padar sunrise, Pink Beach snorkeling, Komodo tour." },
+                    { day: "Hari 3", title: "Manta Point & Taka Makassar", desc: "Snorkeling Manta Point & Taka Makassar." },
+                    { day: "Hari 4", title: "Souvenir & Airport Transfer", desc: "Pusat oleh-oleh & transfer Bandara Komodo." }
+                ]
+            },
+            2: {
+                title: "Exotic Nusa Penida & Ubud Heritage",
+                category: "domestik private-trip",
+                type: "Private Trip",
+                duration: "3D2N",
+                price: "Rp 2.150.000 /pax",
+                originalPrice: "Rp 2.800.000",
+                img: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&auto=format&fit=crop&q=80",
+                desc: "Kelingking Beach, Diamond Beach, Treehouse, Cultural Dinner & Resort 4 Stars.",
+                facilities: [
+                    "Resort 4 Stars Ubud",
+                    "Fastboat PP Sanur - Penida",
+                    "Private Car & English Guide",
+                    "Sarapan & Lunch Seafood",
+                    "Entry Ticket All Spot",
+                    "Mineral Water Unlimited"
+                ],
+                itinerary: [
+                    { day: "Hari 1", title: "Arrival & Ubud Culture", desc: "Monkey Forest & Tegallalang Rice Terrace." },
+                    { day: "Hari 2", title: "Nusa Penida Day Tour", desc: "Kelingking Beach, Broken Beach, Diamond Beach." },
+                    { day: "Hari 3", title: "Souvenir & Airport", desc: "Belanja Krisna Bali & transfer Ngurah Rai." }
+                ]
+            },
+            3: {
+                title: "Classic Japan Sakura & Heritage Tour",
+                category: "internasional private-trip",
+                type: "All-In Include Flight",
+                duration: "7D6N",
+                price: "Rp 17.850.000 /pax",
+                originalPrice: "Rp 21.000.000",
+                img: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&auto=format&fit=crop&q=80",
+                desc: "Tokyo, Shinkansen Bullet Train, Mt. Fuji 5th Station, Kyoto Heritage & Universal Studios.",
+                facilities: [
+                    "Tiket Pesawat PP All Tax",
+                    "Hotel 4 Stars Shinjuku/Kyoto",
+                    "Shinkansen Bullet Train",
+                    "Universal Studios Ticket",
+                    "Pocket WiFi 4G Unlimited",
+                    "Tour Leader Indonesia"
+                ],
+                itinerary: [
+                    { day: "Hari 1", title: "Jakarta - Tokyo Haneda", desc: "Penerbangan menuju Tokyo Shinjuku." },
+                    { day: "Hari 2", title: "Tokyo City Landmarks", desc: "Sensoji Temple Asakusa, Skytree, Shibuya." },
+                    { day: "Hari 3", title: "Mt. Fuji & Iyashi no Sato", desc: "Mount Fuji 5th Station & desa tradisional." },
+                    { day: "Hari 4-7", title: "Shinkansen to Kyoto & Osaka", desc: "Fushimi Inari, Arashiyama, Universal Studios." }
+                ]
+            },
+            4: {
+                title: "Exotic Sumba Overland",
+                category: "domestik private-trip",
+                type: "Private Trip",
+                duration: "4D3N",
+                price: "Rp 3.950.000 /pax",
+                originalPrice: "Rp 4.900.000",
+                img: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&auto=format&fit=crop&q=80",
+                desc: "Danau Weekuri, Kampung Adat Ratenggaro, Air Terjun Tanggedu & Sunset Pohon Walakiri.",
+                facilities: [
+                    "Resort Pantai Terbaik Sumba",
+                    "Land Cruiser 4x4 AC",
+                    "Makan Khas Sumba 3x/day",
+                    "Fotografer & Local Guide",
+                    "Tiket Masuk Seluruh Spot"
+                ],
+                itinerary: [
+                    { day: "Hari 1", title: "Ratenggaro Village", desc: "Rumah adat & Pantai Pero sunset." },
+                    { day: "Hari 2", title: "Weekuri Lagoon", desc: "Danau asin Weekuri & Air Terjun Lapopu." },
+                    { day: "Hari 3", title: "Savana Wairinding", desc: "Bukit Wairinding & Pohon Penari Walakiri." },
+                    { day: "Hari 4", title: "Pusat Tenun Ikat", desc: "Tenun ikat asli Sumba & Airport Waingapu." }
+                ]
+            },
+            5: {
+                title: "Bangkok & Pattaya Culinary",
+                category: "internasional open-trip",
+                type: "Open Trip",
+                duration: "4D3N",
+                price: "Rp 4.850.000 /pax",
+                originalPrice: "Rp 6.500.000",
+                img: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&auto=format&fit=crop&q=80",
+                desc: "Wat Arun, Chao Phraya Cruise, Nong Nooch Village Pattaya, & Jodd Fairs Night Market.",
+                facilities: [
+                    "Tiket Pesawat PP Intl",
+                    "Hotel 4 Stars Bangkok/Pattaya",
+                    "Chao Phraya Cruise",
+                    "Kuliner Halal Certified",
+                    "Indonesian Tour Guide"
+                ],
+                itinerary: [
+                    { day: "Hari 1", title: "Arrival Bangkok", desc: "Night market Jodd Fairs." },
+                    { day: "Hari 2", title: "Wat Arun & Pattaya", desc: "Chao Phraya cruise & Wat Arun." },
+                    { day: "Hari 3", title: "Nong Nooch Village", desc: "Elephant show & Pattaya floating market." },
+                    { day: "Hari 4", title: "MBK Center Shopping", desc: "Shopping Mall Platinum & Airport transfer." }
+                ]
+            },
+            6: {
+                title: "Wonderland Turkey & Cappadocia",
+                category: "internasional private-trip",
+                type: "Luxury Private",
+                duration: "10D9N",
+                price: "Rp 19.900.000 /pax",
+                originalPrice: "Rp 24.000.000",
+                img: "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=800&auto=format&fit=crop&q=80",
+                desc: "Cappadocia Balloon, Hagia Sophia, Blue Mosque, Pamukkale Cotton Castle & Cave Hotel 5 Stars.",
+                facilities: [
+                    "Flight Turkish Airways PP",
+                    "Cave Hotel 5 Stars",
+                    "Hot Air Balloon Flight Experience",
+                    "VIP Bus Across Turkey",
+                    "Fullboard Meal & Dinner Cruise"
+                ],
+                itinerary: [
+                    { day: "Hari 1-3", title: "Istanbul Historical Sites", desc: "Hagia Sophia, Blue Mosque, Bosphorus Cruise." },
+                    { day: "Hari 4-6", title: "Cappadocia Hot Air Balloons", desc: "Hot Air Balloon sunrise & Underground City." },
+                    { day: "Hari 7-10", title: "Pamukkale Cotton Castle", desc: "Pamukkale & Romawi Ephesus ancient city." }
+                ]
+            }
+        };
+
+        function renderKatalog() {
+            const grid = document.getElementById('katalog-grid');
+            const searchVal = document.getElementById('katalog-search').value.toLowerCase();
+            const catVal = document.getElementById('katalog-category').value;
+
+            grid.innerHTML = '';
+            Object.keys(packagesData).forEach(id => {
+                const item = packagesData[id];
+                const matchesSearch = item.title.toLowerCase().includes(searchVal) || item.desc.toLowerCase().includes(searchVal);
+                const matchesCat = catVal === 'all' || item.category.includes(catVal);
+
+                if (matchesSearch && matchesCat) {
+                    grid.innerHTML += `
+                        <div class="tour-card group bg-surface rounded-2xl overflow-hidden border border-gray-200/80 hover:shadow-xl transition-all duration-300 flex flex-col">
+                            <div class="relative aspect-[4/3] overflow-hidden">
+                                <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full border border-gray-200">
+                                    <span class="font-caps text-xs font-bold text-primary">${item.duration}</span>
+                                </div>
+                            </div>
+                            <div class="p-4 sm:p-5 flex flex-col flex-grow">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="font-caps text-[10px] sm:text-[11px] font-semibold text-secondary uppercase bg-secondary/10 px-2.5 py-0.5 rounded">${item.type}</span>
+                                </div>
+                                <h3 class="font-display text-lg sm:text-xl text-primary mb-1.5 group-hover:text-secondary transition-colors">${item.title}</h3>
+                                <p class="text-xs text-on-surface-variant mb-4 font-light line-clamp-2">${item.desc}</p>
+                                
+                                <div class="border-t border-gray-100 pt-3 mt-auto flex items-center justify-between">
+                                    <div>
+                                        <div class="text-[10px] text-gray-400 line-through">${item.originalPrice}</div>
+                                        <div class="font-display text-base sm:text-lg font-bold text-secondary">${item.price}</div>
+                                    </div>
+                                    <button onclick="openPackageModal(${id})" class="bg-primary/10 hover:bg-primary text-primary hover:text-white font-caps text-xs px-3.5 py-2 rounded-lg transition-colors font-bold uppercase tracking-wider">
+                                        Detail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        function openPackageModal(id) {
+            const pkg = packagesData[id];
+            if (!pkg) return;
+
+            document.getElementById('modal-img').src = pkg.img;
+            document.getElementById('modal-title').innerText = pkg.title;
+            document.getElementById('modal-badge-type').innerText = pkg.type;
+            document.getElementById('modal-badge-duration').innerText = pkg.duration;
+            document.getElementById('modal-price').innerText = pkg.price;
+            document.getElementById('modal-original-price').innerText = pkg.originalPrice;
+
+            document.getElementById('modal-facilities').innerHTML = pkg.facilities.map(f => `
+                <div class="bg-white p-2.5 rounded-xl border border-gray-100 text-xs font-light text-on-surface-variant flex items-center">${f}</div>
+            `).join('');
+
+            document.getElementById('modal-itinerary').innerHTML = pkg.itinerary.map(item => `
+                <div class="p-3 bg-white rounded-xl border border-gray-100 flex gap-3 items-start">
+                    <span class="bg-secondary/10 text-secondary font-caps font-bold text-[11px] px-2 py-1 rounded shrink-0">${item.day}</span>
+                    <div>
+                        <h4 class="font-display text-xs sm:text-sm font-bold text-primary">${item.title}</h4>
+                        <p class="text-[11px] sm:text-xs text-on-surface-variant font-light mt-0.5">${item.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('modal-book-btn').onclick = function() {
+                window.location.href = `index.html#kontak`;
+            };
+
+            document.getElementById('packageModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePackageModal() {
+            document.getElementById('packageModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Mobile Menu Drawer Toggle & Auto Close on click
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        document.getElementById('katalog-filter-btn')?.addEventListener('click', renderKatalog);
+        document.getElementById('katalog-search')?.addEventListener('keyup', renderKatalog);
+
+        document.addEventListener('DOMContentLoaded', renderKatalog);
+    </script>
+</body>
+
+</html>
