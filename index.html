@@ -106,6 +106,69 @@
         .modal-content {
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease-in-out;
         }
+
+        /* High-Contrast Navbar Hover & Active Effects */
+        .nav-link {
+            position: relative;
+            font-weight: 600;
+            transition: color 0.25s ease-in-out;
+            padding-bottom: 2px;
+        }
+
+        /* Unscrolled state (Navbar over dark header/hero) */
+        nav:not(.scrolled) .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        nav:not(.scrolled) .nav-link:hover {
+            color: #fbbf24 !important; /* Bright High-Contrast Gold (#fbbf24) */
+        }
+
+        /* Scrolled state (Navbar over light surface background) */
+        nav.scrolled .nav-link {
+            color: #1a2122; /* Dark slate text */
+        }
+
+        nav.scrolled .nav-link:hover {
+            color: #ad3319 !important; /* High-Contrast Terracotta Red (#ad3319) */
+        }
+
+        /* Underline indicator animation on hover */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2.5px;
+            border-radius: 2px;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+        }
+
+        nav:not(.scrolled) .nav-link::after {
+            background-color: #fbbf24;
+            box-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+        }
+
+        nav.scrolled .nav-link::after {
+            background-color: #ad3319;
+            box-shadow: 0 0 8px rgba(173, 51, 25, 0.4);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Drawer Nav Link Hover Contrast */
+        .mobile-nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            transition: color 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .mobile-nav-link:hover {
+            color: #fbbf24 !important;
+            padding-left: 0.5rem;
+        }
     </style>
 </head>
 
@@ -115,17 +178,18 @@
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 sm:py-5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
             <!-- Brand Logo -->
-            <a href="#" id="nav-logo" class="font-display text-2xl sm:text-3xl text-white tracking-tight transition-colors duration-300">
+            <a href="index" id="nav-logo" class="font-display text-2xl sm:text-3xl text-white tracking-tight transition-colors duration-300">
                 Arvenza<span class="text-tertiary">.</span>
             </a>
 
             <!-- Navigation Links (Desktop) -->
             <div class="hidden md:flex items-center gap-8">
-                <a href="#paket" class="nav-link font-caps text-xs tracking-wider uppercase text-white/90 hover:text-white transition-colors">Paket Tour</a>
-                <a href="#layanan" class="nav-link font-caps text-xs tracking-wider uppercase text-white/90 hover:text-white transition-colors">Layanan</a>
-                <a href="#keunggulan" class="nav-link font-caps text-xs tracking-wider uppercase text-white/90 hover:text-white transition-colors">Keunggulan</a>
-                <a href="#testimoni" class="nav-link font-caps text-xs tracking-wider uppercase text-white/90 hover:text-white transition-colors">Testimoni</a>
-                <a href="#faq" class="nav-link font-caps text-xs tracking-wider uppercase text-white/90 hover:text-white transition-colors">FAQ</a>
+                <a href="paket-wisata" class="nav-link font-caps text-xs tracking-wider uppercase">Paket Tour</a>
+                <a href="#layanan" class="nav-link font-caps text-xs tracking-wider uppercase">Layanan</a>
+                <a href="#keunggulan" class="nav-link font-caps text-xs tracking-wider uppercase">Keunggulan</a>
+                <a href="#galeri" class="nav-link font-caps text-xs tracking-wider uppercase">Galeri</a>
+                <a href="#testimoni" class="nav-link font-caps text-xs tracking-wider uppercase">Testimoni</a>
+                <a href="#faq" class="nav-link font-caps text-xs tracking-wider uppercase">FAQ</a>
             </div>
 
             <!-- CTA Button (Desktop) -->
@@ -143,11 +207,12 @@
 
         <!-- Mobile Drawer Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-primary/95 backdrop-blur-lg border-b border-white/10 px-6 pt-4 pb-6 mt-3 space-y-3 shadow-2xl transition-all">
-            <a href="#paket" class="mobile-nav-link block font-caps text-sm text-white/90 hover:text-tertiary py-2 border-b border-white/5">Paket Wisata</a>
-            <a href="#layanan" class="mobile-nav-link block font-caps text-sm text-white/90 hover:text-tertiary py-2 border-b border-white/5">Kategori Layanan</a>
-            <a href="#keunggulan" class="mobile-nav-link block font-caps text-sm text-white/90 hover:text-tertiary py-2 border-b border-white/5">Keunggulan Kami</a>
-            <a href="#testimoni" class="mobile-nav-link block font-caps text-sm text-white/90 hover:text-tertiary py-2 border-b border-white/5">Testimoni Traveler</a>
-            <a href="#faq" class="mobile-nav-link block font-caps text-sm text-white/90 hover:text-tertiary py-2 border-b border-white/5">FAQ</a>
+            <a href="paket-wisata" class="mobile-nav-link block font-caps text-sm py-2 border-b border-white/5">Paket Wisata</a>
+            <a href="#layanan" class="mobile-nav-link block font-caps text-sm py-2 border-b border-white/5">Kategori Layanan</a>
+            <a href="#keunggulan" class="mobile-nav-link block font-caps text-sm py-2 border-b border-white/5">Keunggulan Kami</a>
+            <a href="#galeri" class="mobile-nav-link block font-caps text-sm py-2 border-b border-white/5">Galeri Momen Trip</a>
+            <a href="#testimoni" class="mobile-nav-link block font-caps text-sm py-2 border-b border-white/5">Testimoni Traveler</a>
+            <a href="#faq" class="mobile-nav-link block font-caps text-sm py-2 border-b border-white/5">FAQ</a>
             <a href="#kontak" class="mobile-nav-link block w-full text-center bg-whatsapp text-white font-caps text-xs uppercase tracking-wider py-3.5 rounded-xl font-bold shadow-md flex items-center justify-center gap-2 mt-4">
                 <i class="fa-brands fa-whatsapp text-base"></i> Konsultasi Trip Now
             </a>
@@ -469,7 +534,7 @@
 
             <!-- View All Link -->
             <div class="mt-8 sm:mt-12 text-center">
-                <a href="paket-wisata.html" class="inline-flex items-center gap-2 bg-surface border-2 border-primary text-primary hover:bg-primary hover:text-white font-caps text-xs uppercase tracking-wider py-3 px-6 sm:px-8 rounded-full transition-all font-bold">
+                <a href="paket-wisata" class="inline-flex items-center gap-2 bg-surface border-2 border-primary text-primary hover:bg-primary hover:text-white font-caps text-xs uppercase tracking-wider py-3 px-6 sm:px-8 rounded-full transition-all font-bold">
                     Lihat Semua Katalog Paket
                 </a>
             </div>
@@ -652,77 +717,198 @@
             </div>
         </section>
 
-        <!-- Galeri Momen Trip -->
-        <section class="py-12 sm:py-16 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal">
+        <!-- Galeri Momen Trip (#galeri) -->
+        <section id="galeri" class="py-12 sm:py-16 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal">
             <div class="flex flex-col items-center text-center mb-8">
-                <span class="font-caps text-xs font-bold text-secondary uppercase tracking-widest mb-2">Dokumentasi Real</span>
-                <h2 class="font-display text-3xl sm:text-4xl text-primary">Momen Indah Bersama Travelers</h2>
+                <span class="bg-secondary/10 text-secondary font-caps text-xs font-bold uppercase tracking-widest px-3.5 py-1 rounded-full border border-secondary/20 mb-2">Dokumentasi Real Traveler</span>
+                <h2 class="font-display text-3xl sm:text-4xl text-primary">Momen Indah Bersama Arvenza</h2>
+                <p class="text-xs sm:text-sm text-on-surface-variant max-w-xl font-light mt-2">
+                    Foto autentik dokumentasi perjalanan para traveler kami. Klik gambar mana saja untuk melihat tampilan full-screen resolusi tinggi.
+                </p>
+
+                <!-- Gallery Category Filter Tabs -->
+                <div class="flex flex-wrap justify-center gap-2 mt-6">
+                    <button class="gallery-filter-btn active bg-primary text-white font-caps text-xs font-semibold px-4 py-2 rounded-full transition-all" data-filter="all">
+                        Semua Momen (12)
+                    </button>
+                    <button class="gallery-filter-btn bg-surface-container-low text-on-surface-variant hover:bg-gray-200 font-caps text-xs font-semibold px-4 py-2 rounded-full transition-all" data-filter="sailing">
+                        Sailing & Ocean
+                    </button>
+                    <button class="gallery-filter-btn bg-surface-container-low text-on-surface-variant hover:bg-gray-200 font-caps text-xs font-semibold px-4 py-2 rounded-full transition-all" data-filter="mountain">
+                        Mountain & Nature
+                    </button>
+                    <button class="gallery-filter-btn bg-surface-container-low text-on-surface-variant hover:bg-gray-200 font-caps text-xs font-semibold px-4 py-2 rounded-full transition-all" data-filter="culture">
+                        Culture & City
+                    </button>
+                </div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-                <div class="postcard-frame rounded-lg overflow-hidden aspect-square">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80" alt="Beach" class="w-full h-full object-cover" />
-                </div>
-                <div class="postcard-frame rounded-lg overflow-hidden aspect-square">
-                    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&auto=format&fit=crop&q=80" alt="Mountain" class="w-full h-full object-cover" />
-                </div>
-                <div class="postcard-frame rounded-lg overflow-hidden aspect-square">
-                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&auto=format&fit=crop&q=80" alt="Lake" class="w-full h-full object-cover" />
-                </div>
-                <div class="postcard-frame rounded-lg overflow-hidden aspect-square">
-                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&auto=format&fit=crop&q=80" alt="Traveler" class="w-full h-full object-cover" />
-                </div>
+            <!-- Gallery Grid Container -->
+            <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+                <!-- Populated via JavaScript dynamically -->
             </div>
         </section>
 
         <!-- FAQ Accordion (#faq) -->
         <section id="faq" class="py-12 sm:py-16 bg-surface-container-low border-t border-gray-200/60 reveal">
-            <div class="max-w-3xl mx-auto px-3 sm:px-6">
+            <div class="max-w-4xl mx-auto px-3 sm:px-6">
                 <div class="flex flex-col items-center text-center mb-8 sm:mb-10">
-                    <span class="font-caps text-xs font-bold text-secondary uppercase tracking-widest mb-2">Informasi Penting</span>
+                    <span class="bg-primary/10 text-primary font-caps text-xs font-bold uppercase tracking-widest px-3.5 py-1 rounded-full border border-primary/20 mb-2">Informasi Penting & Bantuan</span>
                     <h2 class="font-display text-3xl sm:text-4xl text-primary">Pertanyaan Yang Sering Diajukan</h2>
+                    <p class="text-xs sm:text-sm text-on-surface-variant max-w-lg font-light mt-2">
+                        Jawaban lengkap seputar mekanisme pendaftaran, skema pembayaran, fasilitas tour, hingga kebijakan garansi reschedule.
+                    </p>
+
+                    <!-- FAQ Category Tabs -->
+                    <div class="flex flex-wrap justify-center gap-2 mt-6">
+                        <button class="faq-filter-btn active bg-primary text-white font-caps text-xs font-semibold px-4 py-2 rounded-full transition-all" data-faqcat="all">
+                            Semua FAQ (8)
+                        </button>
+                        <button class="faq-filter-btn bg-surface text-on-surface-variant hover:bg-gray-200 font-caps text-xs font-semibold px-4 py-2 rounded-full transition-all" data-faqcat="booking">
+                            Pemesanan & Bayar
+                        </button>
+                        <button class="faq-filter-btn bg-surface text-on-surface-variant hover:bg-gray-200 font-caps text-xs font-semibold px-4 py-2 rounded-full transition-all" data-faqcat="fasilitas">
+                            Fasilitas Trip
+                        </button>
+                        <button class="faq-filter-btn bg-surface text-on-surface-variant hover:bg-gray-200 font-caps text-xs font-semibold px-4 py-2 rounded-full transition-all" data-faqcat="reschedule">
+                            Reschedule & Garansi
+                        </button>
+                    </div>
                 </div>
 
-                <div class="space-y-3 sm:space-y-4">
-                    <details class="group bg-surface rounded-xl border border-gray-200 p-4 sm:p-5 cursor-pointer transition-all [&_summary::-webkit-details-marker]:hidden">
-                        <summary class="flex justify-between items-center font-display text-base sm:text-lg text-primary group-hover:text-secondary">
-                            <span>1. Apakah paket tour sudah termasuk tiket pesawat?</span>
-                            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300 group-open:rotate-180"></i>
-                        </summary>
-                        <p class="text-xs sm:text-sm text-on-surface-variant font-light mt-3 leading-relaxed">
-                            Tergantung paket yang Anda pilih. Pada deskripsi paket tertera opsi <strong>All-In (Inc. Flight)</strong> atau <strong>Land Tour Only</strong>. Kami juga siap membantu pemesanan tiket pesawat dari kota asal Anda.
-                        </p>
-                    </details>
+                <div class="space-y-3 sm:space-y-4" id="faq-list-container">
+                    <!-- Item 1 -->
+                    <div class="faq-item bg-surface rounded-2xl border border-gray-200 shadow-sm transition-all overflow-hidden" data-category="booking">
+                        <button type="button" onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 flex justify-between items-center gap-4 hover:bg-gray-50/80 transition-colors focus:outline-none cursor-pointer">
+                            <span class="font-display text-base sm:text-lg font-semibold text-primary flex items-center gap-3">
+                                <span class="w-7 h-7 rounded-full bg-primary/10 text-primary font-caps text-xs flex items-center justify-center shrink-0 font-bold">1</span>
+                                Apakah paket tour sudah termasuk tiket pesawat?
+                            </span>
+                            <div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center shrink-0 text-primary transition-transform duration-300 faq-icon">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-4 pb-5 sm:px-5 sm:pb-6 text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed border-t border-gray-100 pt-3">
+                            Tergantung paket yang Anda pilih. Pada deskripsi setiap paket tertera opsi <strong>All-In (Inc. Flight)</strong> atau <strong>Land Tour Only</strong>. Jika Anda memilih paket Land Tour, tim konsultan kami siap membantu pemesanan tiket pesawat promo terbaik dari kota asal Anda.
+                        </div>
+                    </div>
 
-                    <details class="group bg-surface rounded-xl border border-gray-200 p-4 sm:p-5 cursor-pointer transition-all [&_summary::-webkit-details-marker]:hidden">
-                        <summary class="flex justify-between items-center font-display text-base sm:text-lg text-primary group-hover:text-secondary">
-                            <span>2. Bagaimana mekanisme skema pembayarannya?</span>
-                            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300 group-open:rotate-180"></i>
-                        </summary>
-                        <p class="text-xs sm:text-sm text-on-surface-variant font-light mt-3 leading-relaxed">
-                            Cukup membayarkan Down Payment (DP) sebesar 30% - 50% untuk mengamankan slot seat/hotel. Pelunasan sisa biaya dilakukan maksimal H-7 sebelum jadwal keberangkatan.
-                        </p>
-                    </details>
+                    <!-- Item 2 -->
+                    <div class="faq-item bg-surface rounded-2xl border border-gray-200 shadow-sm transition-all overflow-hidden" data-category="booking">
+                        <button type="button" onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 flex justify-between items-center gap-4 hover:bg-gray-50/80 transition-colors focus:outline-none cursor-pointer">
+                            <span class="font-display text-base sm:text-lg font-semibold text-primary flex items-center gap-3">
+                                <span class="w-7 h-7 rounded-full bg-primary/10 text-primary font-caps text-xs flex items-center justify-center shrink-0 font-bold">2</span>
+                                Bagaimana skema pembayaran & pelunasan biaya trip?
+                            </span>
+                            <div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center shrink-0 text-primary transition-transform duration-300 faq-icon">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-4 pb-5 sm:px-5 sm:pb-6 text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed border-t border-gray-100 pt-3">
+                            Prosedur pembayaran di Arvenza Travel sangat aman & fleksibel:
+                            <ul class="list-disc list-inside mt-2 space-y-1 text-on-surface-variant">
+                                <li><strong>Down Payment (DP):</strong> Sebesar 30% - 50% untuk mengamankan slot seat phinisi / tiket / hotel.</li>
+                                <li><strong>Pelunasan:</strong> Sisa pembayaran dapat dilunasi maksimal H-7 sebelum jadwal keberangkatan.</li>
+                                <li>Metode pembayaran via Transfer Rekening Resmi PT / QRIS / Credit Card.</li>
+                            </ul>
+                        </div>
+                    </div>
 
-                    <details class="group bg-surface rounded-xl border border-gray-200 p-4 sm:p-5 cursor-pointer transition-all [&_summary::-webkit-details-marker]:hidden">
-                        <summary class="flex justify-between items-center font-display text-base sm:text-lg text-primary group-hover:text-secondary">
-                            <span>3. Bisakah memesan Private Trip dengan custom itinerary?</span>
-                            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300 group-open:rotate-180"></i>
-                        </summary>
-                        <p class="text-xs sm:text-sm text-on-surface-variant font-light mt-3 leading-relaxed">
-                            Sangat bisa! Layanan Private Trip kami bersifat 100% custom. Anda dapat menentukan destinasi, tipe hotel, tempat makan, hingga ritme perjalanan sesuai kenyamanan keluarga Anda.
-                        </p>
-                    </details>
+                    <!-- Item 3 -->
+                    <div class="faq-item bg-surface rounded-2xl border border-gray-200 shadow-sm transition-all overflow-hidden" data-category="fasilitas">
+                        <button type="button" onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 flex justify-between items-center gap-4 hover:bg-gray-50/80 transition-colors focus:outline-none cursor-pointer">
+                            <span class="font-display text-base sm:text-lg font-semibold text-primary flex items-center gap-3">
+                                <span class="w-7 h-7 rounded-full bg-primary/10 text-primary font-caps text-xs flex items-center justify-center shrink-0 font-bold">3</span>
+                                Bisakah memesan Private Trip dengan custom itinerary?
+                            </span>
+                            <div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center shrink-0 text-primary transition-transform duration-300 faq-icon">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-4 pb-5 sm:px-5 sm:pb-6 text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed border-t border-gray-100 pt-3">
+                            Sangat bisa! Layanan Private Trip kami bersifat 100% tailor-made. Anda bebas merancang destinasi impian, menentukan tanggal keberangkatan, memilih kelas hotel, jenis armada mobil, hingga request tempat makan khas keluarga.
+                        </div>
+                    </div>
 
-                    <details class="group bg-surface rounded-xl border border-gray-200 p-4 sm:p-5 cursor-pointer transition-all [&_summary::-webkit-details-marker]:hidden">
-                        <summary class="flex justify-between items-center font-display text-base sm:text-lg text-primary group-hover:text-secondary">
-                            <span>4. Bagaimana jika terjadi cuaca buruk atau kendala penerbangan?</span>
-                            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300 group-open:rotate-180"></i>
-                        </summary>
-                        <p class="text-xs sm:text-sm text-on-surface-variant font-light mt-3 leading-relaxed">
-                            Keselamatan Anda adalah prioritas utama. Jika terjadi kendala cuaca ekstrem atau penutupan destinasi, kami menyediakan opsi penyesuaian alternatif destinasi setara atau penjadwalan ulang (reschedule).
-                        </p>
-                    </details>
+                    <!-- Item 4 -->
+                    <div class="faq-item bg-surface rounded-2xl border border-gray-200 shadow-sm transition-all overflow-hidden" data-category="reschedule">
+                        <button type="button" onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 flex justify-between items-center gap-4 hover:bg-gray-50/80 transition-colors focus:outline-none cursor-pointer">
+                            <span class="font-display text-base sm:text-lg font-semibold text-primary flex items-center gap-3">
+                                <span class="w-7 h-7 rounded-full bg-primary/10 text-primary font-caps text-xs flex items-center justify-center shrink-0 font-bold">4</span>
+                                Bagaimana jika terjadi cuaca buruk atau kendala penerbangan?
+                            </span>
+                            <div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center shrink-0 text-primary transition-transform duration-300 faq-icon">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-4 pb-5 sm:px-5 sm:pb-6 text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed border-t border-gray-100 pt-3">
+                            Keselamatan Anda adalah prioritas utama. Jika terdapat penutupan penyeberangan laut atau force majeure cuaca buruk dari Syahbandar, kami menyediakan jaminan opsi pengalihan destinasi setara atau <strong>Reschedule Jadwal Tanpa Biaya Tambahan</strong>.
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="faq-item bg-surface rounded-2xl border border-gray-200 shadow-sm transition-all overflow-hidden" data-category="fasilitas">
+                        <button type="button" onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 flex justify-between items-center gap-4 hover:bg-gray-50/80 transition-colors focus:outline-none cursor-pointer">
+                            <span class="font-display text-base sm:text-lg font-semibold text-primary flex items-center gap-3">
+                                <span class="w-7 h-7 rounded-full bg-primary/10 text-primary font-caps text-xs flex items-center justify-center shrink-0 font-bold">5</span>
+                                Fasilitas apa saja yang sudah include dalam Paket Sailing Phinisi?
+                            </span>
+                            <div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center shrink-0 text-primary transition-transform duration-300 faq-icon">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-4 pb-5 sm:px-5 sm:pb-6 text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed border-t border-gray-100 pt-3">
+                            Paket Sailing Phinisi Arvenza Travel sudah All-Inclusive mencakup: Kabin AC Private/Sharing, Makan Chef 3x sehari + Snack & Juice, Air Mineral Unlimited, Dokumentasi Foto DSLR & Drone HD, Alat Snorkeling Lengkap + Life Jacket, serta Tour Guide lokal berpengalaman.
+                        </div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="faq-item bg-surface rounded-2xl border border-gray-200 shadow-sm transition-all overflow-hidden" data-category="fasilitas">
+                        <button type="button" onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 flex justify-between items-center gap-4 hover:bg-gray-50/80 transition-colors focus:outline-none cursor-pointer">
+                            <span class="font-display text-base sm:text-lg font-semibold text-primary flex items-center gap-3">
+                                <span class="w-7 h-7 rounded-full bg-primary/10 text-primary font-caps text-xs flex items-center justify-center shrink-0 font-bold">6</span>
+                                Apakah tour aman & ramah untuk anak-anak serta lansia?
+                            </span>
+                            <div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center shrink-0 text-primary transition-transform duration-300 faq-icon">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-4 pb-5 sm:px-5 sm:pb-6 text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed border-t border-gray-100 pt-3">
+                            Sangat aman. Untuk perjalanan keluarga yang membawa lansia atau anak balita, kami menyarankan skema <em>Private Trip</em> agar ritme perjalanan lebih santai dan fasilitas kendaraan dapat disesuaikan untuk kenyamanan penuh.
+                        </div>
+                    </div>
+
+                    <!-- Item 7 -->
+                    <div class="faq-item bg-surface rounded-2xl border border-gray-200 shadow-sm transition-all overflow-hidden" data-category="reschedule">
+                        <button type="button" onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 flex justify-between items-center gap-4 hover:bg-gray-50/80 transition-colors focus:outline-none cursor-pointer">
+                            <span class="font-display text-base sm:text-lg font-semibold text-primary flex items-center gap-3">
+                                <span class="w-7 h-7 rounded-full bg-primary/10 text-primary font-caps text-xs flex items-center justify-center shrink-0 font-bold">7</span>
+                                Bagaimana prosedur jika saya perlu membatalkan perjalanan?
+                            </span>
+                            <div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center shrink-0 text-primary transition-transform duration-300 faq-icon">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-4 pb-5 sm:px-5 sm:pb-6 text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed border-t border-gray-100 pt-3">
+                            Pembatalan yang dilakukan sebelum H-14 keberangkatan dapat diproses reschedule atau pengalihan kepemilikan slot (ganti nama peserta) tanpa dikenakan penalti biaya. Detail rincian dapat dibaca di Term & Condition invoice resmi.
+                        </div>
+                    </div>
+
+                    <!-- Item 8 -->
+                    <div class="faq-item bg-surface rounded-2xl border border-gray-200 shadow-sm transition-all overflow-hidden" data-category="booking">
+                        <button type="button" onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 flex justify-between items-center gap-4 hover:bg-gray-50/80 transition-colors focus:outline-none cursor-pointer">
+                            <span class="font-display text-base sm:text-lg font-semibold text-primary flex items-center gap-3">
+                                <span class="w-7 h-7 rounded-full bg-primary/10 text-primary font-caps text-xs flex items-center justify-center shrink-0 font-bold">8</span>
+                                Apakah melayani Gathering/Outing Perusahaan dengan Faktur Pajak?
+                            </span>
+                            <div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center shrink-0 text-primary transition-transform duration-300 faq-icon">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden px-4 pb-5 sm:px-5 sm:pb-6 text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed border-t border-gray-100 pt-3">
+                            Ya, PT Arvenza Wisata Indonesia adalah badan usaha legal (PKP) resmi dengan nomor izin PPIU No. 912000341. Kami menyediakan dokumen invoice resmi, kwitansi, perjanjian kontrak kerjasama, dan Faktur Pajak untuk invoice korporat/perusahaan.
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -807,7 +993,7 @@
     <footer class="bg-primary text-white border-t border-white/10 pt-12 sm:pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 mb-8 sm:mb-12">
             <div>
-                <a href="#" class="font-display text-xl sm:text-2xl text-white mb-3 block">
+                <a href="index" class="font-display text-xl sm:text-2xl text-white mb-3 block">
                     Arvenza<span class="text-tertiary">.</span>
                 </a>
                 <p class="text-xs text-white/70 font-light leading-relaxed mb-3">
@@ -908,6 +1094,39 @@
                         <!-- Populated by JS -->
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full-Screen Image Lightbox Modal for Gallery -->
+    <div id="galleryModal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md transition-all duration-300">
+        <!-- Close Button -->
+        <button onclick="closeGalleryModal()" class="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all shadow-xl cursor-pointer" aria-label="Close Lightbox">
+            <i class="fa-solid fa-xmark text-lg sm:text-xl"></i>
+        </button>
+
+        <!-- Previous Image Button -->
+        <button onclick="prevGalleryImage()" class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-50 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all shadow-xl cursor-pointer" aria-label="Previous Image">
+            <i class="fa-solid fa-chevron-left text-lg sm:text-xl"></i>
+        </button>
+
+        <!-- Next Image Button -->
+        <button onclick="nextGalleryImage()" class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-50 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all shadow-xl cursor-pointer" aria-label="Next Image">
+            <i class="fa-solid fa-chevron-right text-lg sm:text-xl"></i>
+        </button>
+
+        <!-- Modal Center Content Box -->
+        <div class="relative max-w-5xl w-full max-h-[85vh] flex flex-col items-center justify-center">
+            <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/10 max-h-[75vh] flex items-center justify-center bg-black/50">
+                <img id="gallery-modal-img" src="" alt="Gallery Preview" class="max-h-[72vh] w-auto max-w-full object-contain transition-all duration-300" />
+            </div>
+            <div class="mt-4 text-center text-white px-4">
+                <div class="flex items-center justify-center gap-2 mb-1">
+                    <span id="gallery-modal-location" class="bg-tertiary/90 text-white font-caps text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider"></span>
+                    <span id="gallery-modal-counter" class="bg-white/20 text-white/90 font-caps text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full font-semibold"></span>
+                </div>
+                <h3 id="gallery-modal-title" class="font-display text-lg sm:text-2xl font-bold leading-snug"></h3>
+                <p id="gallery-modal-caption" class="text-xs sm:text-sm text-white/70 font-light mt-1 max-w-xl mx-auto"></p>
             </div>
         </div>
     </div>
@@ -1136,31 +1355,26 @@
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             const navLogo = document.getElementById('nav-logo');
-            const navLinks = document.querySelectorAll('.nav-link');
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 
             if (window.scrollY > 60) {
-                navbar.classList.add('bg-surface/95', 'backdrop-blur-md', 'shadow-md', 'py-3');
+                navbar.classList.add('scrolled', 'bg-surface/95', 'backdrop-blur-md', 'shadow-md', 'py-3', 'border-b', 'border-gray-200/50');
                 navbar.classList.remove('py-4', 'sm:py-5');
-                navLogo.classList.remove('text-white');
-                navLogo.classList.add('text-primary');
-                navLinks.forEach(l => {
-                    l.classList.remove('text-white/90');
-                    l.classList.add('text-on-surface-variant');
-                });
+                if (navLogo) {
+                    navLogo.classList.remove('text-white');
+                    navLogo.classList.add('text-primary');
+                }
                 if (mobileMenuBtn) {
                     mobileMenuBtn.classList.remove('text-white', 'bg-black/25', 'border-white/20');
                     mobileMenuBtn.classList.add('text-primary', 'bg-primary/10', 'border-primary/20');
                 }
             } else {
-                navbar.classList.remove('bg-surface/95', 'backdrop-blur-md', 'shadow-md', 'py-3');
+                navbar.classList.remove('scrolled', 'bg-surface/95', 'backdrop-blur-md', 'shadow-md', 'py-3', 'border-b', 'border-gray-200/50');
                 navbar.classList.add('py-4', 'sm:py-5');
-                navLogo.classList.remove('text-primary');
-                navLogo.classList.add('text-white');
-                navLinks.forEach(l => {
-                    l.classList.remove('text-on-surface-variant');
-                    l.classList.add('text-white/90');
-                });
+                if (navLogo) {
+                    navLogo.classList.remove('text-primary');
+                    navLogo.classList.add('text-white');
+                }
                 if (mobileMenuBtn) {
                     mobileMenuBtn.classList.remove('text-primary', 'bg-primary/10', 'border-primary/20');
                     mobileMenuBtn.classList.add('text-white', 'bg-black/25', 'border-white/20');
@@ -1214,11 +1428,276 @@
             });
         }
 
+        // FAQ Accordion Toggle Function
+        function toggleFaq(buttonEl) {
+            const faqItem = buttonEl.closest('.faq-item');
+            const answerEl = faqItem.querySelector('.faq-answer');
+            const iconEl = faqItem.querySelector('.faq-icon');
+
+            const isOpen = !answerEl.classList.contains('hidden');
+
+            // Close all other active FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const ans = item.querySelector('.faq-answer');
+                const ic = item.querySelector('.faq-icon');
+                if (ans) ans.classList.add('hidden');
+                if (ic) {
+                    ic.classList.remove('rotate-180', 'bg-primary', 'text-white');
+                    ic.classList.add('bg-surface-container-low', 'text-primary');
+                }
+                item.classList.remove('border-primary', 'ring-1', 'ring-primary/20');
+            });
+
+            if (!isOpen) {
+                answerEl.classList.remove('hidden');
+                iconEl.classList.add('rotate-180', 'bg-primary', 'text-white');
+                iconEl.classList.remove('bg-surface-container-low', 'text-primary');
+                faqItem.classList.add('border-primary', 'ring-1', 'ring-primary/20');
+            }
+        }
+
+        // FAQ Category Filter Handler
+        function initFaqFilters() {
+            const faqFilterBtns = document.querySelectorAll('.faq-filter-btn');
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqFilterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    faqFilterBtns.forEach(b => {
+                        b.classList.remove('bg-primary', 'text-white');
+                        b.classList.add('bg-surface', 'text-on-surface-variant');
+                    });
+                    btn.classList.add('bg-primary', 'text-white');
+                    btn.classList.remove('bg-surface', 'text-on-surface-variant');
+
+                    const category = btn.getAttribute('data-faqcat');
+                    faqItems.forEach(item => {
+                        const itemCat = item.getAttribute('data-category');
+                        if (category === 'all' || itemCat === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Gallery Data Registry for 12 High-Res Travel Documentation Images
+        const galleryData = [
+            {
+                id: 0,
+                title: "Sailing Luxury Phinisi Boat",
+                location: "Labuan Bajo, NTT",
+                category: "sailing",
+                src: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1200&auto=format&fit=crop&q=80",
+                thumb: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=600&auto=format&fit=crop&q=80",
+                caption: "Pengalaman menginap di Kapal Luxury Phinisi AC menjelajahi gugusan pulau spektakuler Labuan Bajo."
+            },
+            {
+                id: 1,
+                title: "Sunrise Peak Pulau Padar",
+                location: "Taman Nasional Komodo",
+                category: "mountain",
+                src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&q=80",
+                thumb: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
+                caption: "Pemandangan sunrise dramatis dari puncak Pulau Padar dengan panorama 3 teluk berwarna ikonik."
+            },
+            {
+                id: 2,
+                title: "Kelingking T-Rex Cliff",
+                location: "Nusa Penida, Bali",
+                category: "sailing",
+                src: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1200&auto=format&fit=crop&q=80",
+                thumb: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&auto=format&fit=crop&q=80",
+                caption: "Tebing eksotis berbentuk T-Rex dengan pasir putih & air laut jernih berkilau Nusa Penida."
+            },
+            {
+                id: 3,
+                title: "Tegallalang Emerald Rice Terrace",
+                location: "Ubud, Gianyar - Bali",
+                category: "mountain",
+                src: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&auto=format&fit=crop&q=80",
+                thumb: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&auto=format&fit=crop&q=80",
+                caption: "Petualangan sejuk menyusuri terasering sawah bersejarah bertingkat khas budaya Ubud."
+            },
+            {
+                id: 4,
+                title: "Kyoto Heritage & Sakura Blossom",
+                location: "Arashiyama, Japan",
+                category: "culture",
+                src: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&auto=format&fit=crop&q=80",
+                thumb: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&auto=format&fit=crop&q=80",
+                caption: "Momen musim bersemi bunga sakura merona di sepanjang kuil kuno & hutan bambu Kyoto."
+            },
+            {
+                id: 5,
+                title: "Majestic Mount Fuji Lake View",
+                location: "Lake Kawaguchiko, Japan",
+                category: "mountain",
+                src: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&auto=format&fit=crop&q=80",
+                thumb: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&auto=format&fit=crop&q=80",
+                caption: "Panorama megah Gunung Fuji yang tertutup salju terpantul jernih di atas Danau Kawaguchiko."
+            },
+            {
+                id: 6,
+                title: "Eksotisme Savana Wairinding",
+                location: "Sumba Timur, NTT",
+                category: "mountain",
+                src: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=1200&auto=format&fit=crop&q=80",
+                thumb: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=600&auto=format&fit=crop&q=80",
+                caption: "Pemandangan perbukitan savana membentang luas bagaikan permadani eksotis di Pulau Sumba."
+            },
+            {
+                id: 7,
+                title: "Snorkeling Manta Ray Point",
+                location: "Perairan Komodo, NTT",
+                category: "sailing",
+                src: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&auto=format&fit=crop&q=80",
+                thumb: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&auto=format&fit=crop&q=80",
+                caption: "Berenang bebas bersama kawanan ikan Pari Manta raksasa yang menakjubkan di habitat aslinya."
+            },
+            {
+                id: 8,
+                title: "Wat Arun Temple Golden Hour",
+                location: "Bangkok, Thailand",
+                category: "culture",
+                src: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1200&auto=format&fit=crop&q=80",
+                thumb: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&auto=format&fit=crop&q=80",
+                caption: "Kemegahan arsitektur kuil bersejarah Wat Arun di tepi sungai Chao Phraya saat momen senja."
+            },
+            {
+                id: 9,
+                title: "Sunrise Hot Air Balloon Sky",
+                location: "Cappadocia, Turkey",
+                category: "culture",
+                src: "https://images.unsplash.com/photo-1527838832700-54595d249193?w=1200&auto=format&fit=crop&q=80",
+                thumb: "https://images.unsplash.com/photo-1527838832700-54595d249193?w=600&auto=format&fit=crop&q=80",
+                caption: "Pengalaman ajaib terbang di atas cerobong peri Cappadocia saat matahari terbit merona."
+            },
+            {
+                id: 10,
+                title: "Phinisi Deck Sunset Relax",
+                location: "Pulau Kalong, Labuan Bajo",
+                category: "sailing",
+                src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&auto=format&fit=crop&q=80",
+                thumb: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&auto=format&fit=crop&q=80",
+                caption: "Bersantai di sundeck kapal Phinisi sembari menikmati keindahan kawanan kelelawar raksasa melintasi senja."
+            },
+            {
+                id: 11,
+                title: "Luxury Villa Infinity Pool",
+                location: "Ubud Resort, Bali",
+                category: "culture",
+                src: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&auto=format&fit=crop&q=80",
+                thumb: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&auto=format&fit=crop&q=80",
+                caption: "Akomodasi resort berbintang & villa eksklusif yang termasuk dalam paket private tour Arvenza."
+            }
+        ];
+
+        let currentGalleryIndex = 0;
+
+        function renderGallery(filter = 'all') {
+            const gridContainer = document.getElementById('gallery-grid');
+            if (!gridContainer) return;
+
+            gridContainer.innerHTML = '';
+
+            galleryData.forEach((item, index) => {
+                if (filter === 'all' || item.category === filter) {
+                    const card = document.createElement('div');
+                    card.className = 'group relative rounded-2xl overflow-hidden aspect-square cursor-pointer shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200/80 bg-surface';
+                    card.onclick = () => openGalleryLightbox(index);
+
+                    card.innerHTML = `
+                        <img src="${item.thumb}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3.5 sm:p-4 text-white">
+                            <div class="flex justify-end">
+                                <span class="w-8 h-8 sm:w-9 sm:h-9 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white group-hover:bg-secondary group-hover:scale-110 transition-all shadow-md">
+                                    <i class="fa-solid fa-expand text-xs sm:text-sm"></i>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="bg-tertiary/90 text-white font-caps text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider mb-1 inline-block">${item.location}</span>
+                                <h4 class="font-display text-sm sm:text-base font-bold leading-tight line-clamp-1 group-hover:text-white">${item.title}</h4>
+                                <p class="text-[10px] text-white/80 font-light mt-0.5 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <i class="fa-solid fa-magnifying-glass-plus"></i> Klik untuk preview full-screen
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                    gridContainer.appendChild(card);
+                }
+            });
+        }
+
+        function initGalleryFilters() {
+            const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-primary', 'text-white');
+                        b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+                    });
+                    btn.classList.add('bg-primary', 'text-white');
+                    btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+
+                    const filter = btn.getAttribute('data-filter');
+                    renderGallery(filter);
+                });
+            });
+        }
+
+        function openGalleryLightbox(index) {
+            currentGalleryIndex = index;
+            const item = galleryData[index];
+            if (!item) return;
+
+            document.getElementById('gallery-modal-img').src = item.src;
+            document.getElementById('gallery-modal-title').innerText = item.title;
+            document.getElementById('gallery-modal-location').innerText = item.location;
+            document.getElementById('gallery-modal-caption').innerText = item.caption;
+            document.getElementById('gallery-modal-counter').innerText = `Foto ${index + 1} dari ${galleryData.length}`;
+
+            const modal = document.getElementById('galleryModal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGalleryModal() {
+            const modal = document.getElementById('galleryModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function prevGalleryImage() {
+            currentGalleryIndex = (currentGalleryIndex - 1 + galleryData.length) % galleryData.length;
+            openGalleryLightbox(currentGalleryIndex);
+        }
+
+        function nextGalleryImage() {
+            currentGalleryIndex = (currentGalleryIndex + 1) % galleryData.length;
+            openGalleryLightbox(currentGalleryIndex);
+        }
+
+        // Keyboard navigation listener for Gallery Modal
+        document.addEventListener('keydown', (e) => {
+            const galleryModal = document.getElementById('galleryModal');
+            if (galleryModal && !galleryModal.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeGalleryModal();
+                if (e.key === 'ArrowLeft') prevGalleryImage();
+                if (e.key === 'ArrowRight') nextGalleryImage();
+            }
+        });
+
         // DOM Ready Initialization
         document.addEventListener('DOMContentLoaded', () => {
             initCounters();
             initTourFilters();
             initScrollReveal();
+            initFaqFilters();
+            renderGallery('all');
+            initGalleryFilters();
         });
     </script>
 </body>
