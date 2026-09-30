@@ -1064,7 +1064,7 @@
             </div>
 
             <!-- Modal Body Content -->
-            <div class="p-4 sm:p-8 space-y-5 sm:space-y-6">
+            <div class="p-4 sm:p-7 space-y-5 sm:space-y-6">
                 <!-- Pricing & Quick Specs -->
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3.5 sm:p-4 bg-surface-container-low rounded-2xl border border-gray-200">
                     <div>
@@ -1079,19 +1079,99 @@
                     </button>
                 </div>
 
-                <!-- Highlights & Facilities -->
-                <div>
-                    <h3 class="font-display text-base sm:text-lg text-primary mb-2.5">Fasilitas Termasuk (All-In Included):</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3" id="modal-facilities">
-                        <!-- Populated by JS -->
+                <!-- Navigation Tabs -->
+                <div class="flex border-b border-gray-200 overflow-x-auto no-scrollbar gap-1 text-xs font-semibold text-gray-500">
+                    <button onclick="switchModalTab('tab-facilities')" id="btn-tab-facilities" class="modal-tab-btn active px-3.5 py-2.5 border-b-2 border-primary text-primary font-bold transition-all whitespace-nowrap flex items-center gap-1.5">
+                        <i class="fa-solid fa-list-check"></i> Fasilitas (In & Ex)
+                    </button>
+                    <button onclick="switchModalTab('tab-itinerary')" id="btn-tab-itinerary" class="modal-tab-btn px-3.5 py-2.5 border-b-2 border-transparent hover:text-primary transition-all whitespace-nowrap flex items-center gap-1.5">
+                        <i class="fa-solid fa-calendar-days"></i> Jadwal & Itinerary
+                    </button>
+                    <button onclick="switchModalTab('tab-terms')" id="btn-tab-terms" class="modal-tab-btn px-3.5 py-2.5 border-b-2 border-transparent hover:text-primary transition-all whitespace-nowrap flex items-center gap-1.5">
+                        <i class="fa-solid fa-file-shield"></i> Syarat & Ketentuan
+                    </button>
+                    <button onclick="switchModalTab('tab-info')" id="btn-tab-info" class="modal-tab-btn px-3.5 py-2.5 border-b-2 border-transparent hover:text-primary transition-all whitespace-nowrap flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-info"></i> Info & Packing List
+                    </button>
+                </div>
+
+                <!-- Tab 1: Fasilitas Included & Excluded -->
+                <div id="tab-facilities" class="modal-tab-content space-y-5">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2.5">
+                            <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-check"></i></span>
+                            <h3 class="font-display text-base sm:text-lg font-bold text-primary">Fasilitas Termasuk (Include):</h3>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5" id="modal-facilities"></div>
+                    </div>
+
+                    <div class="border-t border-gray-100 pt-4">
+                        <div class="flex items-center gap-2 mb-2.5">
+                            <span class="w-6 h-6 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-xmark"></i></span>
+                            <h3 class="font-display text-base sm:text-lg font-bold text-primary">Fasilitas Tidak Termasuk (Exclude):</h3>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5" id="modal-excludes"></div>
                     </div>
                 </div>
 
-                <!-- Itinerary Timeline Breakdown -->
-                <div>
-                    <h3 class="font-display text-base sm:text-lg text-primary mb-2.5">Rencana Perjalanan (Itinerary):</h3>
-                    <div class="space-y-2.5" id="modal-itinerary">
-                        <!-- Populated by JS -->
+                <!-- Tab 2: Jadwal & Itinerary -->
+                <div id="tab-itinerary" class="modal-tab-content space-y-5 hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3.5 sm:p-4 bg-emerald-50/70 rounded-2xl border border-emerald-100">
+                        <div class="flex items-start gap-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-emerald-600/10 text-emerald-700 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-calendar-check text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Jadwal Keberangkatan</h4>
+                                <p id="modal-schedule-dates" class="text-xs sm:text-sm font-semibold text-emerald-950 mt-0.5"></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-blue-600/10 text-blue-700 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Titik Kumpul (Meeting Point)</h4>
+                                <p id="modal-meeting-point" class="text-xs sm:text-sm font-semibold text-blue-950 mt-0.5"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-display text-base sm:text-lg font-bold text-primary mb-2.5">Rencana Perjalanan (Itinerary Detil):</h3>
+                        <div class="space-y-2.5" id="modal-itinerary"></div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Syarat & Ketentuan -->
+                <div id="tab-terms" class="modal-tab-content space-y-4 hidden">
+                    <div class="p-4 bg-amber-50/70 rounded-2xl border border-amber-200/70 space-y-2.5">
+                        <div class="flex items-center gap-2 text-amber-900 font-bold text-sm">
+                            <i class="fa-solid fa-file-shield text-base text-amber-600"></i> Syarat & Ketentuan Pendaftaran:
+                        </div>
+                        <ul class="space-y-2 text-xs text-amber-950/90 list-disc list-inside font-light" id="modal-terms-list"></ul>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-gray-200 space-y-2">
+                        <div class="flex items-center gap-2 text-primary font-bold text-sm">
+                            <i class="fa-solid fa-rotate-left text-base text-secondary"></i> Kebijakan Pembatalan & Reschedule:
+                        </div>
+                        <p id="modal-cancellation-policy" class="text-xs text-on-surface-variant font-light leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Info Penting & Packing List -->
+                <div id="tab-info" class="modal-tab-content space-y-4 hidden">
+                    <div>
+                        <h4 class="font-display text-sm font-bold text-primary mb-2.5 flex items-center gap-2">
+                            <i class="fa-solid fa-suitcase text-secondary"></i> Barang & Perlengkapan Wajib Dibawa:
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="modal-packing-list"></div>
+                    </div>
+
+                    <div class="p-3.5 bg-blue-50/80 rounded-xl border border-blue-100 text-xs text-blue-950 flex items-start gap-2.5">
+                        <i class="fa-solid fa-circle-info text-blue-600 text-base shrink-0 mt-0.5"></i>
+                        <span id="modal-important-note" class="font-light leading-relaxed"></span>
                     </div>
                 </div>
             </div>
@@ -1132,8 +1212,26 @@
     </div>
 
     <!-- JavaScript Logic -->
-    <script>
-        // Package Data Registry for Modal Popups
+        function switchModalTab(tabId) {
+            const contents = document.querySelectorAll('.modal-tab-content');
+            contents.forEach(el => el.classList.add('hidden'));
+
+            const btns = document.querySelectorAll('.modal-tab-btn');
+            btns.forEach(btn => {
+                btn.classList.remove('border-primary', 'text-primary', 'font-bold');
+                btn.classList.add('border-transparent', 'text-gray-500');
+            });
+
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) targetContent.classList.remove('hidden');
+
+            const targetBtn = document.getElementById('btn-' + tabId);
+            if (targetBtn) {
+                targetBtn.classList.remove('border-transparent', 'text-gray-500');
+                targetBtn.classList.add('border-primary', 'text-primary', 'font-bold');
+            }
+        }
+
         const packagesData = {
             1: {
                 title: "Sailing Labuan Bajo Premium",
@@ -1142,20 +1240,45 @@
                 price: "Rp 3.490.000 /pax",
                 originalPrice: "Rp 4.500.000",
                 img: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&auto=format&fit=crop&q=80",
+                schedule: "Setiap Hari Jumat - Minggu (Open Trip) & Bebas Pilih Tanggal (Private Trip)",
+                meetingPoint: "Bandara Komodo (LBJ) / Hotel area Labuan Bajo (Maks. 09.00 WITA)",
                 facilities: [
-                    "Hotel 1M & Phinisi 2M",
-                    "Transport Airport PP",
-                    "Makan All-In 3x Sehari",
-                    "Kapal Luxury Phinisi AC",
-                    "Drone & DSLR Photo",
-                    "Alat Snorkeling Lengkap"
+                    "Hotel 1 Malam & Phinisi 2 Malam (Cabin AC)",
+                    "Transport Airport PP (Penjemputan Bandara Komodo)",
+                    "Makan All-In 3x Sehari (Fresh Seafood & Local Menu)",
+                    "Kapal Luxury Phinisi AC & Snorkel Gear Lengkap",
+                    "Dokumentasi Foto Drone & DSLR Camera",
+                    "Live Guide & Captain Kapal Profesional"
+                ],
+                excludes: [
+                    "Tiket Pesawat dari/ke Kota Asal (Labuan Bajo)",
+                    "Tiket Masuk Taman Nasional Komodo (LN/WN)",
+                    "Tipping Volunteer Guide & Crew Kapal (Sukarela)",
+                    "Pengeluaran Pribadi & Mini Bar",
+                    "Asuransi Perjalanan Pribadi"
                 ],
                 itinerary: [
-                    { day: "Hari 1", title: "Penjemputan & Sunset Pulau Kalong", desc: "Penjemputan di Bandara Komodo, check-in kapal Phinisi, dan menikmati sunset Pulau Kalong." },
+                    { day: "Hari 1", title: "Penjemputan & Sunset Pulau Kalong", desc: "Penjemputan di Bandara Komodo, check-in kapal Phinisi, dan menikmati sunset spektakuler Pulau Kalong." },
                     { day: "Hari 2", title: "Trekking Pulau Padar & Pink Beach", desc: "Trekking puncak Padar sunrise, snorkeling di Pink Beach, dan foto bersama Komodo di Pulau Rinca." },
                     { day: "Hari 3", title: "Manta Point & Taka Makassar", desc: "Snorkeling bareng Pari Manta di Manta Point, foto di pulau pasir Taka Makassar & Kanawa Island." },
                     { day: "Hari 4", title: "Souvenir Hunting & Transfer Out", desc: "Belanja oleh-oleh khas Bajo, wisata pusat kuliner seafood, dan transfer menuju Bandara Komodo." }
-                ]
+                ],
+                terms: [
+                    "Uang Muka (DP) minimal 30% saat konfirmasi pendaftaran.",
+                    "Pelunasan biaya tour maksimal H-3 sebelum keberangkatan.",
+                    "Peserta berusia 2 - 65 tahun dalam keadaan sehat fisik & mental.",
+                    "Wajib menunjukkan KTP / Paspor asli yang masih berlaku."
+                ],
+                cancellationPolicy: "Pembatalan H-14 uang DP dikembalikan 50%. Pembatalan kurang dari H-7 DP dianggap hangus, namun jadwal tour dapat di-reschedule ke tanggal berikutnya.",
+                packingList: [
+                    "Sunblock / Sunscreen (Reef safe)",
+                    "Pakaian Renang & Pakaian Santai",
+                    "Sandal Gunung / Sepatu Trekking",
+                    "Drybag & Kacamata Hitam",
+                    "Obat-obatan Pribadi",
+                    "Powerbank & Kamera"
+                ],
+                importantNote: "Jadwal sailing dapat menyesuaikan kondisi cuaca & gelombang laut demi keselamatan bersama yang diputuskan oleh Syahbandar & Kapten Kapal."
             },
             2: {
                 title: "Exotic Nusa Penida & Ubud Heritage",
@@ -1164,19 +1287,43 @@
                 price: "Rp 2.150.000 /pax",
                 originalPrice: "Rp 2.800.000",
                 img: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&auto=format&fit=crop&q=80",
+                schedule: "Setiap Hari (Keberangkatan Bebas Pilih Tanggal Kapan Saja)",
+                meetingPoint: "Bandara Ngurah Rai (DPS) / Lobby Hotel area Kuta, Seminyak, Sanur",
                 facilities: [
-                    "Resort 4 Stars in Ubud",
-                    "Fastboat PP Sanur - Penida",
-                    "Private Car & English Guide",
-                    "Sarapan & Lunch Seafood",
-                    "Entry Ticket All Spot",
-                    "Mineral Water Unlimited"
+                    "Resort Bintang 4 di Ubud (2 Malam Include Breakfast)",
+                    "Tiket Fastboat PP Sanur - Nusa Penida",
+                    "Mobil Private AC & Driver merangkap Guide",
+                    "Sarapan Hotel & Lunch Seafood di Nusa Penida",
+                    "Tiket Masuk Seluruh Objek Wisata",
+                    "Air Mineral Unlimited selama Tour"
+                ],
+                excludes: [
+                    "Tiket Pesawat menuju/dari Bali (DPS)",
+                    "Makan Malam (Dinner) di Luar Program",
+                    "Tipping Driver & Tour Guide (Sukarela)",
+                    "Pengeluaran Pribadi (Belanja, Laundry, Minibar)",
+                    "Wahana Opsional (Bali Swing / Watersport)"
                 ],
                 itinerary: [
                     { day: "Hari 1", title: "Arrival & Cultural Ubud Exploration", desc: "Penjemputan Bandara Ngurah Rai, kunjungan ke Sacred Monkey Forest Ubud & Tegallalang Rice Terrace." },
                     { day: "Hari 2", title: "West & East Nusa Penida Tour", desc: "Fastboat ke Penida, Kelingking Beach, Broken Beach, Angel's Billabong, & Diamond Beach." },
                     { day: "Hari 3", title: "Souvenir Center & Transfer Out", desc: "Wisata belanja Krisna/Oleh-oleh Bali, santai di Pantai Kuta/Canggu, dan transfer ke airport." }
-                ]
+                ],
+                terms: [
+                    "DP 30% saat registrasi booking.",
+                    "Pelunasan dilakukan saat hari H kedatangan di Bali.",
+                    "Harga berlaku untuk wisatawan domestik (WNI). WNA dikenakan adjustment tiket wisata.",
+                    "Anak-anak usia di bawah 3 tahun gratis (tanpa bed tambahan)."
+                ],
+                cancellationPolicy: "Pembatalan hingga H-7 gratis biaya pembatalan & DP kembali 100%. Pembatalan H-3 dipotong 50% DP.",
+                packingList: [
+                    "Pakaian Santai / Casual Wear",
+                    "Baju Renang / Pantai",
+                    "Topi Pantai & Kacamata UV",
+                    "Obat Anti Mabuk Laut (Fastboat)",
+                    "Kamera & Charger"
+                ],
+                importantNote: "Perjalanan ke Nusa Penida menggunakan Fastboat. Disarankan membawa tas ransel/backpack agar lebih praktis saat naik-turun dermaga."
             },
             3: {
                 title: "Classic Japan Sakura & Heritage Tour",
@@ -1185,13 +1332,22 @@
                 price: "Rp 17.850.000 /pax",
                 originalPrice: "Rp 21.000.000",
                 img: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&auto=format&fit=crop&q=80",
+                schedule: "Periode Sakura (Maret - Mei) & Periode Momiji / Autumn (Oktober - November)",
+                meetingPoint: "Bandara Soekarno-Hatta Terminal 3 International (CGK) Jam 19.00 WIB",
                 facilities: [
-                    "Tiket Pesawat PP All Tax",
-                    "Hotel 4 Stars Shinjuku/Kyoto",
-                    "Shinkansen Bullet Train",
-                    "Universal Studios Ticket",
-                    "Pocket WiFi 4G Unlimited",
-                    "Tour Leader Indonesia"
+                    "Tiket Pesawat PP International (Full Service + Bagasi 23kg)",
+                    "Hotel Bintang 4 di Tokyo (Shinjuku) & Kyoto",
+                    "Tiket Kereta Cepat Shinkansen (Tokyo - Kyoto)",
+                    "Tiket Masuk Universal Studios Japan (USJ) Osaka",
+                    "Pocket WiFi 4G Unlimited per kelompok",
+                    "Tour Leader Indonesia & Bantuan Pengurusan Visa"
+                ],
+                excludes: [
+                    "Asuransi Perjalanan Internasional (Wajib disarankan)",
+                    "Tipping Tour Leader & Guide (JPY 500 / pax / hari)",
+                    "Makan Siang & Malam yang tidak tertera (Wisata Kuliner Mandiri)",
+                    "Pengeluaran Pribadi (Belanja, Vending Machine, Transport Tambahan)",
+                    "Biaya Pembuatan / Perpanjangan Paspor"
                 ],
                 itinerary: [
                     { day: "Hari 1", title: "Jakarta - Tokyo Haneda", desc: "Penerbangan menuju Tokyo, penjemputan airport & hotel check-in di daerah Shinjuku." },
@@ -1199,7 +1355,22 @@
                     { day: "Hari 3", title: "Mt. Fuji & Iyashi no Sato", desc: "Mengunjungi Gunung Fuji Stasiun ke-5, desa tradisional Iyashi no Sato dengan pemandangan Fuji." },
                     { day: "Hari 4", title: "Shinkansen to Kyoto & Fushimi Inari", desc: "Naik Kereta Cepat Shinkansen menuju Kyoto, kunjungan ke Gerbang Merah Fushimi Inari & Arashiyama Bamboo." },
                     { day: "Hari 5-7", title: "Osaka & Universal Studios", desc: "Petualangan seharian di Universal Studios Japan, kuliner Dotonbori Osaka, & penerbangan pulang." }
-                ]
+                ],
+                terms: [
+                    "DP Pendaftaran Rp 5.000.000 / pax.",
+                    "Pelunasan maksimal H-30 sebelum jadwal keberangkatan.",
+                    "Paspor harus masih berlaku minimal 6 bulan dari tanggal penerbangan.",
+                    "Pengurusan Visa dibantu penuh oleh tim konsuler kami."
+                ],
+                cancellationPolicy: "Pembatalan setelah cetak tiket pesawat & pengurusan visa tunduk pada regulasi maskapai & kedutaan (non-refundable ticket & visa fee).",
+                packingList: [
+                    "Paspor Asli & Cetakan E-Ticket / Visa",
+                    "Jaket / Outer Musim Dingin atau Musim Semi",
+                    "Adaptor Listrik Tipe A (Colokan Jepang)",
+                    "Sepatu Kets / Running Shoes yang Nyaman",
+                    "Obat-obatan Pribadi & Lip Balm"
+                ],
+                importantNote: "Mata uang di Jepang adalah Yen (JPY). Disarankan sudah melakukan penukaran valas di Indonesia sebelum keberangkatan."
             },
             4: {
                 title: "Exotic Sumba Overland",
@@ -1208,19 +1379,132 @@
                 price: "Rp 3.950.000 /pax",
                 originalPrice: "Rp 4.900.000",
                 img: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&auto=format&fit=crop&q=80",
+                schedule: "Setiap Hari (Minimal 2 Pax Pendaftaran, Bebas Pilih Tanggal)",
+                meetingPoint: "Bandara Tambolaka (TMC) Sumba Barat (Maks. 11.00 WITA)",
                 facilities: [
-                    "Resort Pantai Terbaik Sumba",
-                    "Land Cruiser 4x4 AC",
-                    "Makan Khas Sumba 3x/day",
-                    "Fotografer & Local Guide",
-                    "Tiket Masuk Seluruh Spot"
+                    "Resort Pantai Terbaik di Sumba Barat & Timur",
+                    "Transport Land Cruiser 4x4 / Double Cabin AC + BBM",
+                    "Makan Khas Sumba 3x Sehari",
+                    "Driver & Local Guide Profesional + Fotografer Spot",
+                    "Tiket Masuk & Retribusi Seluruh Destinasi",
+                    "Air Mineral & Coffee Break di Destinasi"
+                ],
+                excludes: [
+                    "Tiket Pesawat PP dari/ke Sumba (Tambolaka & Waingapu)",
+                    "Tipping Driver & Local Guide",
+                    "Pengeluaran Pribadi & Belanja Kain Tenun Sumba",
+                    "Asuransi Perjalanan"
                 ],
                 itinerary: [
                     { day: "Hari 1", title: "Sumba Barat & Kampung Ratenggaro", desc: "Penjemputan Bandara Tambolaka, mengunjungi Rumah Adat Ratenggaro & Pantai Pero sunset." },
                     { day: "Hari 2", title: "Danau Weekuri & Air Terjun Lapopu", desc: "Berenang di Danau Asin Weekuri yang jernih & menjelajahi Air Terjun Lapopu Sumba Barat." },
                     { day: "Hari 3", title: "Bukit Wairinding & Pohon Penari Walakiri", desc: "Sunset perbukitan savana Wairinding & foto ikonik Pohon Penari di Pantai Walakiri." },
                     { day: "Hari 4", title: "Pusat Tenun Ikat & Transfer Out", desc: "Belanja kain tenun ikat asli Sumba, transfer menuju Bandara Waingapu." }
-                ]
+                ],
+                terms: [
+                    "DP 30% dari total invoice biaya paket.",
+                    "Pelunasan dilakukan H-3 sebelum hari keberangkatan.",
+                    "Tiket kedatangan disarankan tiba di Tambolaka (TMC) & kepulangan dari Waingapu (WGP)."
+                ],
+                cancellationPolicy: "Pembatalan H-14 DP kembali 50%. Pembatalan kurang dari H-7 DP tidak dapat dikembalikan namun jadwal dapat di-reschedule.",
+                packingList: [
+                    "Sepatu Outdoor / Sandal Anti Slip",
+                    "Pakaian Santai & Jaket Tipis untuk Malam Hari",
+                    "Lotion Anti Nyamuk & Sunblock",
+                    "Kamera / Drone & Memori Tambahan",
+                    "Uang Tunai (ATM terbatas di area destinasi)"
+                ],
+                importantNote: "Perjalanan overland Sumba menempuh jarak yang cukup jauh antar destinasi. Persiapkan fisik dan persediaan obat pribadi."
+            },
+            5: {
+                title: "Bangkok & Pattaya Culinary",
+                type: "Open Trip",
+                duration: "4D3N",
+                price: "Rp 4.850.000 /pax",
+                originalPrice: "Rp 6.500.000",
+                img: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&auto=format&fit=crop&q=80",
+                schedule: "Setiap Hari Kamis - Minggu (Keberangkatan Rutin Mingguan)",
+                meetingPoint: "Bandara Soekarno-Hatta (CGK) / Don Mueang Airport (DMK)",
+                facilities: [
+                    "Tiket Pesawat PP International + Kabin 7kg",
+                    "Hotel Bintang 4 di Bangkok & Pattaya",
+                    "Chao Phraya Dinner Cruise Ticket",
+                    "Kuliner Halal Certified (Breakfast, Lunch, Dinner)",
+                    "Indonesian Speaking Tour Guide & Bus AC",
+                    "Tiket Masuk Nong Nooch Village & Cultural Show"
+                ],
+                excludes: [
+                    "Bagasi Teredam (Optional Add-on Bagasi 20kg)",
+                    "Tipping Tour Guide & Driver ($5 / pax / hari)",
+                    "Asuransi Perjalanan Internasional",
+                    "Pengeluaran Pribadi & Pertunjukan Cabaret Opsional"
+                ],
+                itinerary: [
+                    { day: "Hari 1", title: "Arrival Bangkok", desc: "Night market Jodd Fairs." },
+                    { day: "Hari 2", title: "Wat Arun & Pattaya", desc: "Chao Phraya cruise & Wat Arun." },
+                    { day: "Hari 3", title: "Nong Nooch Village", desc: "Elephant show & Pattaya floating market." },
+                    { day: "Hari 4", title: "MBK Center Shopping", desc: "Shopping Mall Platinum & Airport transfer." }
+                ],
+                terms: [
+                    "DP Rp 2.000.000 / pax saat pendaftaran.",
+                    "Pelunasan H-14 sebelum keberangkatan.",
+                    "Paspor aktif minimal 6 bulan dari masa berlaku kedatangan.",
+                    "WNI Bebas Visa masuk Thailand hingga 30 hari."
+                ],
+                cancellationPolicy: "Pembatalan H-21 dipotong biaya tiket penerbangan yang sudah terisikan. Reschedule mengikuti ketentuan maskapai.",
+                packingList: [
+                    "Paspor Asli & Dokumen Perjalanan",
+                    "Pakaian Sopan (Menutup Bahu & Lutut untuk Kuil Wat Arun)",
+                    "Sepatu Jalan yang Nyaman",
+                    "Uang Tunai Thailand Baht (THB)",
+                    "Universal Travel Adapter"
+                ],
+                importantNote: "Saat mengunjungi tempat ibadah seperti Wat Arun & Wat Pho, pengunjung wajib mengenakan pakaian yang sopan & tertutup."
+            },
+            6: {
+                title: "Wonderland Turkey & Cappadocia",
+                type: "Luxury Private",
+                duration: "10D9N",
+                price: "Rp 19.900.000 /pax",
+                originalPrice: "Rp 24.000.000",
+                img: "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=800&auto=format&fit=crop&q=80",
+                schedule: "Keberangkatan Sepanjang Tahun (Jadwal Setiap Bulan)",
+                meetingPoint: "Bandara Soekarno-Hatta Terminal 3 (CGK) Jam 18.00 WIB",
+                facilities: [
+                    "Tiket Pesawat Turkish Airlines PP (Direct / 1 Stop)",
+                    "Hotel 5 Stars & Unique Cave Hotel Cappadocia",
+                    "Hot Air Balloon Ride Experience di Cappadocia",
+                    "Bus VIP Exclusive Executive dengan Free WiFi",
+                    "Bosphorus Night Cruise dengan Dinner & Show",
+                    "Fullboard Meals (Breakfast, Lunch, Dinner Khas Turki)",
+                    "Professional Licensed Tour Guide"
+                ],
+                excludes: [
+                    "Tipping Mandatory Guide & Driver ($80 / pax total)",
+                    "E-Visa Turki (US$ 60 / pax - pengurusan dibantu)",
+                    "Asuransi Perjalanan Internasional dengan Coverage Medis",
+                    "Pengeluaran Pribadi (Laundry, Telepon, Mini Bar Hotel)"
+                ],
+                itinerary: [
+                    { day: "Hari 1-3", title: "Istanbul Historical Sites", desc: "Hagia Sophia, Blue Mosque, Bosphorus Cruise." },
+                    { day: "Hari 4-6", title: "Cappadocia Hot Air Balloons", desc: "Hot Air Balloon sunrise & Underground City." },
+                    { day: "Hari 7-10", title: "Pamukkale Cotton Castle", desc: "Pamukkale & Romawi Ephesus ancient city." }
+                ],
+                terms: [
+                    "DP Pendaftaran Rp 5.000.000 / pax.",
+                    "Pelunasan H-21 sebelum tanggal penerbangan.",
+                    "Paspor aktif minimal 6 bulan.",
+                    "Proses E-Visa Turki kilat 1-2 hari kerja."
+                ],
+                cancellationPolicy: "Pembatalan H-30 dikenakan denda tiket pesawat. Kurang dari H-14 DP tidak dapat dikembalikan.",
+                packingList: [
+                    "Paspor & E-Visa Turki Cetak",
+                    "Pakaian Thermal / Jaket Tebal (Musim Dingin) atau Casual (Musim Panas)",
+                    "Sepatu Sneaker / Boot Nyaman",
+                    "Kacamata UV & Sunblock",
+                    "Uang Lira Turki (TRY) / US Dollar / Euro"
+                ],
+                importantNote: "Penerbangan balon udara di Cappadocia bergantung pada kondisi angin & izin dari otoritas penerbangan sipil Turki demi keselamatan."
             }
         };
 
@@ -1229,6 +1513,9 @@
             const pkg = packagesData[id];
             if (!pkg) return;
 
+            // Reset Tab to Facilities
+            switchModalTab('tab-facilities');
+
             document.getElementById('modal-img').src = pkg.img;
             document.getElementById('modal-title').innerText = pkg.title;
             document.getElementById('modal-badge-type').innerText = pkg.type;
@@ -1236,37 +1523,60 @@
             document.getElementById('modal-price').innerText = pkg.price;
             document.getElementById('modal-original-price').innerText = pkg.originalPrice;
 
-            // Render Facilities
-            const facContainer = document.getElementById('modal-facilities');
-            facContainer.innerHTML = pkg.facilities.map(f => `
-                <div class="bg-white p-2.5 rounded-xl border border-gray-100 text-xs font-light text-on-surface-variant flex items-center">
-                    ${f}
+            // Render Included Facilities
+            document.getElementById('modal-facilities').innerHTML = pkg.facilities.map(f => `
+                <div class="bg-emerald-50/50 p-2.5 rounded-xl border border-emerald-100 text-xs text-emerald-950 flex items-center gap-2">
+                    <i class="fa-solid fa-check text-emerald-600 shrink-0 text-xs"></i>
+                    <span>${f}</span>
                 </div>
             `).join('');
 
+            // Render Excluded Facilities
+            document.getElementById('modal-excludes').innerHTML = (pkg.excludes || []).map(e => `
+                <div class="bg-rose-50/50 p-2.5 rounded-xl border border-rose-100 text-xs text-rose-950 flex items-center gap-2">
+                    <i class="fa-solid fa-xmark text-rose-500 shrink-0 text-xs"></i>
+                    <span>${e}</span>
+                </div>
+            `).join('');
+
+            // Schedule & Meeting Point
+            document.getElementById('modal-schedule-dates').innerText = pkg.schedule || "Hubungi Admin untuk tanggal spesifik";
+            document.getElementById('modal-meeting-point').innerText = pkg.meetingPoint || "Lokasi yang disepakati";
+
             // Render Itinerary
-            const itinContainer = document.getElementById('modal-itinerary');
-            itinContainer.innerHTML = pkg.itinerary.map(item => `
-                <div class="p-3 bg-white rounded-xl border border-gray-100 flex gap-3 items-start">
-                    <span class="bg-secondary/10 text-secondary font-caps font-bold text-[11px] px-2 py-1 rounded shrink-0">${item.day}</span>
+            document.getElementById('modal-itinerary').innerHTML = pkg.itinerary.map(item => `
+                <div class="p-3 bg-white rounded-xl border border-gray-100 flex gap-3 items-start shadow-2xs">
+                    <span class="bg-secondary/10 text-secondary font-caps font-bold text-[11px] px-2.5 py-1 rounded shrink-0">${item.day}</span>
                     <div>
                         <h4 class="font-display text-xs sm:text-sm font-bold text-primary">${item.title}</h4>
-                        <p class="text-[11px] sm:text-xs text-on-surface-variant font-light mt-0.5">${item.desc}</p>
+                        <p class="text-[11px] sm:text-xs text-on-surface-variant font-light mt-0.5 leading-relaxed">${item.desc}</p>
                     </div>
                 </div>
             `).join('');
 
+            // Terms & Conditions List
+            document.getElementById('modal-terms-list').innerHTML = (pkg.terms || []).map(t => `
+                <li class="leading-relaxed">${t}</li>
+            `).join('');
+
+            // Cancellation Policy
+            document.getElementById('modal-cancellation-policy').innerText = pkg.cancellationPolicy || "Sesuai dengan ketentuan umum agen.";
+
+            // Packing List
+            document.getElementById('modal-packing-list').innerHTML = (pkg.packingList || []).map(p => `
+                <div class="bg-white p-2.5 rounded-xl border border-gray-200 text-xs text-gray-700 flex items-center gap-2">
+                    <i class="fa-solid fa-check-double text-secondary shrink-0 text-xs"></i>
+                    <span>${p}</span>
+                </div>
+            `).join('');
+
+            // Important Note
+            document.getElementById('modal-important-note').innerText = pkg.importantNote || "Harap membawa dokumen identitas diri yang sah dan obat-obatan pribadi.";
+
             // Book Button WA Link Trigger
             document.getElementById('modal-book-btn').onclick = function() {
-                closePackageModal();
-                const destSelect = document.getElementById('destinasi');
-                if (destSelect) {
-                    destSelect.value = pkg.title.includes("Labuan Bajo") ? "Labuan Bajo" :
-                                      pkg.title.includes("Bali") ? "Bali Nusa Penida" :
-                                      pkg.title.includes("Japan") ? "Classic Japan" :
-                                      pkg.title.includes("Sumba") ? "Sumba Overland" : "Lainnya";
-                }
-                document.getElementById('kontak').scrollIntoView({ behavior: 'smooth' });
+                const waMessage = encodeURIComponent(`Halo Admin Nusantara Tour, saya ingin reservasi & konsultasi mengenai *${pkg.title}* (${pkg.duration} - ${pkg.type}). Bisakah info ketersediaan slotnya?`);
+                window.open(`https://wa.me/6281234567890?text=${waMessage}`, '_blank');
             };
 
             const modal = document.getElementById('packageModal');
